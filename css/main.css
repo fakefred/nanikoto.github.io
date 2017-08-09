@@ -78,3 +78,10 @@ a{
   width: 120px;
   height: 120px;
 }
+
+#likeIcon{
+  height: 80px;
+  width: 80px;
+  position: relative;
+  top: 16px;
+}
