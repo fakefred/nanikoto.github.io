@@ -192,12 +192,12 @@ console.log('main.js is running');
 var APP_ID = 'VaELFg7Ij0guHpKxBqxTjN1J-gzGzoHsz';
 var APP_KEY = 'uE30rQ8zOLVL0UAFrpo0kVux';
 var AV = require('leancloud-storage');
-
 AV.init({
   appId: APP_ID,
   appKey: APP_KEY
 });
 
+//Fetch data on leancloud
 var currentKoto = document.getElementById('currentKoto');
 var publishedTime = document.getElementById('publishedTime');
 
@@ -225,8 +225,12 @@ function fetchNewKoto() {
 var autoFetch = setInterval(fetchNewKoto, 5000);
 
 
-var pubBtn = document.getElementById('publish');
+var pubBtn = document.getElementById('publishBtn');
 pubBtn.addEventListener('click', publishKoto);
+var lgnBtn = document.getElementById('loginBtn');
+lgnBtn.addEventListener('click', logUser);
+var likeBtn = document.getElementById('likeBtn');
+likeBtn.addEventListener('click', switchLike);
 
 function publishKoto() {
   var kotoContent = prompt('Nanikoto?', '');
@@ -248,6 +252,38 @@ function publishKoto() {
   }else{
     console.log('Koto is cancelled');
   }
+}
+
+var currentUser = '';
+
+function logUser() {
+  var phoneNum = prompt('Input your Mobile Phone Number (to decide whether to login or signup)');
+  //check if this number exists
+  var query = new AV.Query('_User');
+  var result = query.matches('username', userName);
+  var firstQuery = result.first();
+  var queryId = firstQuery.id;
+  console.log(queryId);
+  if(typeof queryId === 'undefined' || queryId === null || queryId === undefined || queryId === ''){
+    console.log('no match found');
+    var userName = prompt('Choose a username (changing username is not supported now)');
+    var newUser = new AV.User();
+    newUser.setUsername(userName);
+    newUser.set('phone', phoneNum);
+    newUser.signUp();
+    currentUser = userName;
+    alert('Welcome, ' + currentUser +'!');
+  }else{
+    console.log(id, userName);
+    currentUser = firstQuery.username;
+    alert('Welcome back, ' + currentUser + '!');
+  }
+}
+
+console.log(currentUser);
+
+function switchLike() {
+
 }
 
 },{"leancloud-storage":3}],3:[function(require,module,exports){

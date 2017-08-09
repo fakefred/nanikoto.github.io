@@ -55,15 +55,26 @@ a{
   font-family: sans-serif;
 }
 
-#publish{
-  background-color: #DCEDC8;
-  border-width: 0px;
+#loginBtn{
   position: fixed;
-  right: 100px;
-  bottom: 100px;
+  bottom: 60px;
+  left: 100px;
+  width: 120px;
+  height: 120px;
 }
 
-#fab{
+#publishBtn{
+  position: fixed;
+  bottom: 60px;
+  right: 100px;
   width: 160px;
   height: 160px;
+}
+
+#likeBtn{
+  position: fixed;
+  bottom: 60px;
+  right: 45%;
+  width: 120px;
+  height: 120px;
 }
