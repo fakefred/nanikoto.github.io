@@ -1,7 +1,16 @@
+html{
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+
 body{
+  width: 100%
   font-family: Roboto, "Microsoft Yahei", sans-serif;
   font-size: 50px;
   background-color: #DCEDC8;
+  text-align: center;
 }
 
 header{
@@ -35,16 +44,19 @@ a{
 
 #sub-banner{
   position: relative;
-  top: 10px;
+  top: 0px;
   left:10px;
-  font-size: 56px;
+  font-size: 50px;
   text-align: center;
   font-weight: lighter;
+  font-family: Roboto, "Microsoft Yahei", sans-serif;
 }
 
 #current{
   position: relative;
   top: 20px;
+  left: 0px;
+  width: 100%;
   text-align: center;
 }
 
@@ -53,9 +65,21 @@ a{
   font-size: 96px;
   font-weight: bold;
   font-family: sans-serif;
+  position: relative;
+  left: 0px;
+  width: 90%;
 }
 
-#loginBtn{
+#publishedTime{
+  font-size: 24px;
+  position: relative;
+  top: 32px;
+  font-family: Roboto, "Microsoft Yahei", sans-serif;
+  left: 5%;
+  width: 90%;
+}
+
+#commentBtn{
   position: fixed;
   bottom: 60px;
   left: 100px;
@@ -66,7 +90,7 @@ a{
 #publishBtn{
   position: fixed;
   bottom: 60px;
-  right: 100px;
+  right: 80px;
   width: 160px;
   height: 160px;
 }
@@ -84,4 +108,26 @@ a{
   width: 80px;
   position: relative;
   top: 16px;
+}
+
+#likeNum{
+  font-family: monospace;
+}
+
+#hr{
+  position: relative;
+  left: 0px;
+  width: 80%;
+  height: 6px;
+  color: #333333;
+  background-color: #333333;
+}
+
+#comments{
+  text-align: left;
+  position: relative;
+  left: 200px;
+  top: 16px;
+  font-size: 60px;
+  font-family: 'Roboto Light', sans-serif;
 }

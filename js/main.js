@@ -1,6 +1,13 @@
 //status check
 console.log('main.js is running');
 
+/*
+//For screen display
+var body = document.getElementById('body');
+var screenWidth = screen.width;
+console.log(screenWidth);
+body.style = 'width: ' + screenWidth + 'px';
+*/
 //Leancloud initialization
 var APP_ID = 'VaELFg7Ij0guHpKxBqxTjN1J-gzGzoHsz';
 var APP_KEY = 'uE30rQ8zOLVL0UAFrpo0kVux';
@@ -13,6 +20,9 @@ AV.init({
 //for like refreshing
 var idOfFirstKotoAfterPageLoaded = '';
 var currentLikeStatus = false;
+
+var commentBtn = document.getElementById('commentBtn');
+commentBtn.addEventListener('click', addComment);
 var pubBtn = document.getElementById('publishBtn');
 pubBtn.addEventListener('click', publishKoto);
 var likeBtn = document.getElementById('likeBtn');
@@ -29,6 +39,10 @@ query.first().then(function (data) {
 var currentKoto = document.getElementById('currentKoto');
 var publishedTime = document.getElementById('publishedTime');
 var likeNum = document.getElementById('likeNum');
+var commentsContainer = document.getElementById('comments');
+
+currentKoto.innerHTML = 'Fetching...';
+
 function fetchNewKoto() {
   console.log('fetching...');
   var query = new AV.Query('Koto');
@@ -43,11 +57,13 @@ function fetchNewKoto() {
       var content = latestKoto.get('content');
       var createdAt = latestKoto.createdAt;
       var likes = latestKoto.get('likes');
-      console.log(content, createdAt, likes);
-      currentKoto.innerHTML = content
+      var comments = latestKoto.get('comments');
+      console.log(content, createdAt, likes, comments);
+      currentKoto.innerHTML = content;
       publishedTime.innerHTML = createdAt;
       likeNum.innerHTML = likes;
-        console.log('fetched');
+      commentsContainer.innerHTML = comments;
+      console.log('fetched');
     }, function (error) {
       console.error('failed to load currentKoto');
     });
@@ -112,4 +128,24 @@ function switchLike() {
 
     }, function (error) {});
   }, function (error) {});
+}
+
+//add a comment
+var currentComment = '';
+function addComment() {
+  var commentContent = prompt('What\'s your thoughts?');
+  if(commentContent === null || commentContent === ''){
+    console.log('No comment entered');
+  }else{
+    var query = new AV.Query('Koto');
+    query.descending('createdAt');
+    query.first().then(function (data) {
+      currentComment = data.get('comments');
+      console.log(currentComment);
+      currentComment += '- ' + commentContent + '<br/>';
+      console.log(currentComment);
+      data.set('comments', currentComment);
+      data.save();
+    }, function (error) {});
+  }
 }
