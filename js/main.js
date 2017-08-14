@@ -1,13 +1,6 @@
 //status check
 console.log('main.js is running');
 
-/*
-//For screen display
-var body = document.getElementById('body');
-var screenWidth = screen.width;
-console.log(screenWidth);
-body.style = 'width: ' + screenWidth + 'px';
-*/
 //Leancloud initialization
 var APP_ID = 'VaELFg7Ij0guHpKxBqxTjN1J-gzGzoHsz';
 var APP_KEY = 'uE30rQ8zOLVL0UAFrpo0kVux';

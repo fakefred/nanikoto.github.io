@@ -9,6 +9,7 @@
   "author": "fakefred",
   "license": "MIT",
   "dependencies": {
+    "browserify": "^14.4.0",
     "leancloud-realtime": "^3.5.5",
     "leancloud-storage": "^3.0.4",
     "requirejs": "^2.3.4"
