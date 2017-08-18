@@ -9,9 +9,9 @@ body{
   width: 100%
   font-family: Roboto, "Microsoft Yahei", sans-serif;
   font-size: 50px;
-  background-color: #F44336;
+  background-color: #C5E1A5;
   text-align: center;
-  color: #FFEB3B;
+  color: #333333;
 }
 
 header{
@@ -41,11 +41,6 @@ a{
   top: 10px;
   font-size: 80px;
   text-align: center;
-}
-
-#icon{
-  height: 256px;
-  width: 600px;
 }
 
 #sub-banner{
